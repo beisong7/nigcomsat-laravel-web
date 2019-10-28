@@ -55,7 +55,7 @@ a:hover{
 .carousel-caption {
     position: absolute;
     right: 15%;
-     bottom: 10% !important;
+    bottom: 20% !important;
 }
 .display-4 button{
     border-radius: 0;
@@ -92,6 +92,8 @@ a:hover{
     font-weight: 600;
     text-align: center;
 }
+
+
 
 @media (min-width: 992px) {
     .hover-shadow:hover{
@@ -277,8 +279,22 @@ section.pricing {
     color: #777;
 }
 
-.bg-faded{
+.bg-faded1{
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.27), rgb(0, 0, 0)), url('../img/sliders/slider1.jpg');
+}
+.bg-faded2{
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.27), rgb(0, 0, 0)), url('../img/sliders/slider2.jpg');
+}
+.bg-faded3{
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.27), rgb(0, 0, 0)), url('../img/sliders/slider3.jpg');
+}
+
+.static-headline{
+    position: absolute;
+    top: 10px;
+    width: 96.66666666666666%;
+    color: #FFF;
+    height: 65vh;
 }
 
 

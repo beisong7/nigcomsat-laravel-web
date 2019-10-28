@@ -1,7 +1,7 @@
 <section class="pricing py-5 bg-faded mt-50" >
     <div class="container">
         <div class="row">
-            <div class="mb-5 fill-width"><h2 class="text-center text-white text-uppercase ">Select your prefered plan</h2></div>
+            <div class="mb-5 fill-width"><h2 class="text-center text-white text-uppercase ">Select your preferred plan</h2></div>
         </div>
         <div class="card-deck ">
 

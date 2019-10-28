@@ -3,26 +3,23 @@
         <div class="row">
             <div class="col">
                 <ul class="list-unstyled">
-                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng">News</a></li>
-                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng">Help Center</a></li>
-                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng">Contact Us</a></li>
-                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng">About Us</a></li>
-                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng">Terms of Use</a></li>
-                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng">Privacy Policy</a></li>
+                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng" target="_blank">News</a></li>
+                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng" target="_blank">Help Center</a></li>
+                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng/contact" target="_blank">Contact Us</a></li>
                 </ul>
             </div>
             <div class="col">
                 <ul class="list-unstyled">
-                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng">Facebook</a></li>
-                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng">Twitter</a></li>
-                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng">Instagram</a></li>
+                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng" target="_blank">Facebook</a></li>
+                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng" target="_blank">Twitter</a></li>
+                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng" target="_blank">Instagram</a></li>
                 </ul>
             </div>
             <div class="col">
                 <ul class="list-unstyled">
-                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng">About Us</a></li>
-                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng">Terms of Use</a></li>
-                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng">Privacy Policy</a></li>
+                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng" target="_blank">About Us</a></li>
+                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng" target="_blank">Terms of Use</a></li>
+                    <li class='text-center'><a class='nav-link text-white' href="http://www.nigcomsat.gov.ng" target="_blank">Privacy Policy</a></li>
                 </ul>
             </div>
         </div>

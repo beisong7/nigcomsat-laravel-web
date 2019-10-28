@@ -1,7 +1,7 @@
 <section class="pricing py-5" id="plan">
     <div class="container">
         <div class="row">
-            <div class="mb-5 fill-width"><h3 class="text-center text-white text-uppercase ">Select your prefered plan</h3></div>
+            <div class="mb-5 fill-width"><h3 class="text-center text-white text-uppercase ">Select your preferred plan</h3></div>
         </div>
         <div class="card-deck ">
 
