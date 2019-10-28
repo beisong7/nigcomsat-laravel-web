@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <h6 class="card-price text-center">NIPTV PLUS</h6>
                     <h5 class="text-muted text-center">Get 1 month free, then starts at</h5>
-                    <h3 class=" text-center">NGN 2,499<span class="small">/Month</span></h3>
+                    <h3 class=" text-center">NGN500<span class="small">/Month</span></h3>
                     <hr/>
                     <ul class="fa-ul mb-100">
                         <li>
@@ -46,7 +46,7 @@
                 <div class="card-body">
                     <h6 class="card-price text-center">NIPTV PRO</h6>
                     <h5 class="text-muted text-center">Get 1 month free, then starts at</h5>
-                    <h3 class=" text-center">NGN 7,499<span class="small">/Month</span></h3>
+                    <h3 class=" text-center">NGN1,000<span class="small">/Month</span></h3>
                     <hr/>
                     <ul class="fa-ul mb-100">
                         <li>

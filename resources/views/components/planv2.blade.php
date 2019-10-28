@@ -35,7 +35,7 @@
                             </p>
 
                             <h5 class="text-muted text-center">Get First Month Free</h5>
-                            <h3 class=" text-center"><small>then pay</small> <br class="mb-3"> NGN 2,499<span class="small">/Month</span></h3>
+                            <h3 class=" text-center"><small>then pay</small> <br class="mb-3"> NGN500<span class="small">/Month</span></h3>
                         </li>
 
 
@@ -57,7 +57,7 @@
                             </p>
 
                             <h5 class="text-muted text-center">Get First Month Free</h5>
-                            <h3 class=" text-center"><small>then pay</small> <br class="mb-3"> NGN 7,499<span class="small">/Month</span></h3>
+                            <h3 class=" text-center"><small>then pay</small> <br class="mb-3"> NGN1,000<span class="small">/Month</span></h3>
                         </li>
 
 
