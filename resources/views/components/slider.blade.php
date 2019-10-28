@@ -45,14 +45,14 @@
     </div>
     <div class="static-headline">
         <div class="carousel-caption m-0 d-md-block">
-            <h2 class="text-center">
+            <h2 class="text-center main-text">
                 One Place for All Your TV and Movies
             </h2>
-            <p class="text-center fs-20 mt-3">
+            <p class="text-center fs-20 mt-2">
                 Watch Hundreds of shows and movies, with plans starting at NGN2,499/month.
             </p>
-            <h2 class="text-center mt-4"><a href="{{ route('plans') }}">START YOUR FREE TRIAL</a></h2>
-            <p class="text-center mt-3">
+            <h2 class="text-center mt-3 syft-mobile"><a href="{{ route('plans') }}">START YOUR FREE TRIAL</a></h2>
+            <p class="text-center info-text mt-3">
                 <small>Free trial available for new and eligible returning subscribers only</small>
             </p>
 

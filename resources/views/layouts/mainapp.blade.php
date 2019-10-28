@@ -1,3 +1,4 @@
+<?php $ver = 0.01; ?>
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -13,8 +14,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('fonts/css/all.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css'.'?v='.$ver) }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive.css'.'?v='.$ver) }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -27,6 +28,6 @@
     <script src="{{ asset('js/jquery-3.3.1.slim.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/main.js'.'?v='.$ver) }}"></script>
 </body>
 </html>
