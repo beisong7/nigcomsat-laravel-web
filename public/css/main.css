@@ -1,3 +1,6 @@
+html{
+    scroll-behavior: smooth;
+}
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -6,6 +9,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -45,18 +49,26 @@ code {
     -o-background-size: cover;
     background-size: cover;
 }
+a:hover{
+    text-decoration: none;
+}
 .carousel-caption {
     position: absolute;
     right: 15%;
-    /* top: 200px; */
-    /* bottom: 0 !important */
+     bottom: 10% !important;
 }
 .display-4 button{
     border-radius: 0;
     /* padding: 15px 30px */
 }
-.mt-100{
-    margin-top: 75px
+/*MARGINS*/
+.mt-50{
+    margin-top: 50px
+}
+
+/*FONT SIZES*/
+.fs-20{
+    font-size: 20px;
 }
 
 /*TREND CSS */
@@ -141,18 +153,38 @@ section.pricing {
     opacity: 0.7;
     transition: all 0.2s;
 }
+.mb-100{
+    margin-bottom: 100px;
+}
+
+.snap-bottom{
+    position: absolute;
+    width: 70%;
+    bottom: 20px;
+    margin-left: 12%;
+}
 
 /* Hover Effects on Card */
 
 @media (min-width: 992px) {
     .pricing .card:hover {
-        margin-top: -.25rem;
-        margin-bottom: .25rem;
+        /*margin-top: -.25rem;*/
+        /*margin-bottom: .25rem;*/
         box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
     }
     .pricing .card:hover .btn {
         opacity: 1;
     }
+}
+
+/*SAME HEIGHT CSS*/
+.row.display-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.row.display-flex > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
 }
 
 /*SIGN IN CSS*/
@@ -244,6 +276,11 @@ section.pricing {
     font-size: 12px;
     color: #777;
 }
+
+.bg-faded{
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.27), rgb(0, 0, 0)), url('../img/sliders/slider3.jpg');
+}
+
 
 /* Fallback for Edge
 -------------------------------------------------- */

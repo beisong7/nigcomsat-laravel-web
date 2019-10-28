@@ -1,4 +1,4 @@
-<div class='trend-pad'>
+<div class='trend-pad' id="trends">
     <div class="row">
         <div class="col-md-3">
             <div class="col pb-5">
