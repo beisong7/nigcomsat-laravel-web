@@ -16,3 +16,4 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/subscribe/{type}', 'HomeController@subscribe')->name('subscribe');
 Route::get('/login', 'HomeController@login')->name('login');
+Route::get('/plans', 'HomeController@plan')->name('plans');

@@ -39,7 +39,7 @@
                     <p class="text-center fs-20">
                         Watch Hundreds of shows and movies, with plans starting at NGN2,499/month.
                     </p>
-                    <p class="text-center"><a href="{{ route('subscribe','free') }}">START YOUR FREE TRIAL</a></p>
+                    <p class="text-center"><a href="{{ route('plans') }}">START YOUR FREE TRIAL</a></p>
                     <p class="text-center">
                         <small>Free trial available for new and eligible returning subscribers only</small>
                     </p>

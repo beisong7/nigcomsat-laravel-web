@@ -33,4 +33,8 @@ class HomeController extends Controller
     public function login(){
         return view('pages.forms.login');
     }
+
+    public function plan(){
+        return view('pages.home.plans');
+    }
 }

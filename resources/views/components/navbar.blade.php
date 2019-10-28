@@ -16,7 +16,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#plan">Plans</a>
+                    <a class="nav-link" href="{{ route('home')."#plan" }}">Plans</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('subscribe', 'free') }}">Sign Up</a>
