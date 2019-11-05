@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 offset-3">
+            <div class="col-md-6">
                 <div class="card mb-5">
                     <div class="card-body">
                         <h6 class="card-price text-center">NIPTV PRO</h6>
@@ -56,6 +56,9 @@
                         <a href="{{ route('subscribe','pro') }}" class="btn btn-block btn-primary text-uppercase snap-bottom">select plan</a>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-6 no-mobile">
+
             </div>
         </div>
     </div>
