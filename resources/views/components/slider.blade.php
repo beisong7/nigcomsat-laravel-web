@@ -49,7 +49,7 @@
                 One Place for All Your TV and Movies
             </h2>
             <p class="text-center fs-20 mt-2">
-                Watch Hundreds of shows and movies, with plans starting at NGN2,499/month.
+                Watch Hundreds of shows and movies, with plans starting at NGN1,000/month.
             </p>
             <h2 class="text-center mt-3 syft-mobile"><a href="{{ route('plans') }}">START YOUR FREE TRIAL</a></h2>
             <p class="text-center info-text mt-3">
