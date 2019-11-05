@@ -57,9 +57,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 no-mobile">
-
+            <div class="col-md-6 no-mobile p-3">
+                <img src="{{ url('img/posters/banner.png') }}" alt="" class="img-fit">
             </div>
+                
         </div>
     </div>
 </section>
