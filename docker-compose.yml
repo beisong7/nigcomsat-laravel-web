@@ -1,5 +1,6 @@
 # docker-compose.yml #
 # docker-compose rm -v to remove everything and build up
+# WAS USED TO TEST IN A CONTAINER ENVIRONMET
 version: "3.4"
 
 # networks:
