@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
+use App\Models\Client as Clients;
 use GuzzleHttp as guzzler;
 use Illuminate\Http\Request;
+
 
 
 class HomeController extends Controller
@@ -30,7 +32,7 @@ class HomeController extends Controller
     }
 
     public function subscribe($type){
-        return view('pages.forms.register');
+        return view('pages.forms.register')->with('type', $type);
     }
 
     public function login(){
@@ -76,5 +78,11 @@ class HomeController extends Controller
         }
         return view('pages.channels.index')->with('listVods', $response[0]);
 //        return $response;
+    }
+
+    public function formSuccess($unid){
+        //find client
+        $client = Clients::whereUnid($unid)->first();
+        return view('pages.forms.success')->with('client', $client);
     }
 }

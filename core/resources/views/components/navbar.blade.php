@@ -14,15 +14,32 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('channels') }}">Channels</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home')."#plan" }}">Plans</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('subscribe', 'free') }}">Sign Up</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Sign In</a>
-                </li>
+                @guest('client')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home')."#plan" }}">Plans</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('subscribe', 'free') }}">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Sign In</a>
+                    </li>
+                @endguest
+
+                @auth('client')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('client.dashboard') }}"> <i class="fa fa-user-circle"></i> {{ $client->names }}</a>
+
+                    </li>
+                @endauth
+
+                @auth('web')
+                    <li class="nav-item">
+                        {{ $admin->names }}
+                    </li>
+                @endauth
+
+
             </ul>
         </div>
     </div>

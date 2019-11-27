@@ -17,26 +17,29 @@
                                 <br/>
                                 <h3 class="login-heading mb-0 mt-2 text-center">Sign Up</h3>
                                 <p class="text-center mb-3">Register and have an amazing experience</p>
-                                <form>
+                                <form method="post" action="{{ route('client.reg') }}">
+                                    @csrf
                                     <div class="form-label-group">
-                                        <input type="text" id="inputFullname" class="form-control" placeholder="Full Name" required autoFocus />
+                                        <input type="text" id="inputFullname" class="form-control" placeholder="Full Name" required autoFocus name="names"/>
                                         <label for="inputFullname">Full Names</label>
                                     </div>
                                     <div class="form-label-group">
-                                        <input type="text" id="inputPhone" class="form-control" placeholder="Phone Number" required  />
+                                        <input type="text" id="inputPhone" class="form-control" placeholder="Phone Number" required  name="phone"/>
                                         <label for="inputPhone">Phone</label>
                                     </div>
                                     <div class="form-label-group">
-                                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required  />
+                                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required  name="email"/>
                                         <label for="inputEmail">Email address</label>
                                     </div>
                                     <div class="form-label-group">
-                                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required />
+                                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required name="access"/>
                                         <label for="inputPassword">Password</label>
                                     </div>
 
+                                    <input type="hidden" name="sub_type" value="{{ $type }}">
+
                                     <div class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" id="terms" />
+                                        <input type="checkbox" class="custom-control-input" id="terms" name="terms"/>
                                         <label class="custom-control-label" for="terms">I Accept the <a href="#">terms & conditions</a></label>
                                     </div>
                                     <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign Up</button>

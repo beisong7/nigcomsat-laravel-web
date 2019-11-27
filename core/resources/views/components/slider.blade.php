@@ -1,5 +1,5 @@
 <header>
-    <div id="carouselExampleIndicators" class="carousel slide carousel-fade mt-100" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide carousel-fade mt-50" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
