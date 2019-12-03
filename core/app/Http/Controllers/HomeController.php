@@ -39,7 +39,23 @@ class HomeController extends IptvController
         return view('pages.forms.login');
     }
 
-    public function plan(){
+    public function plan(Request $request){
+        if(!empty($request->input('payment'))){
+            if($request->input('payment')==='success'){
+                $email = $request->input('email');
+                $pay_success = true;
+                return view('pages.home.plans')
+                    ->with('email', $email)
+                    ->with('pay_success', $pay_success)
+                    ->with('msg', 'Payment of NGN 1000 successful');
+            }
+            $email = $request->input('email');
+            $pay_success = false;
+            return view('pages.home.plans')
+                ->with('email', $email)
+                ->with('pay_success', $pay_success)
+                ->with('msg', 'Payment failed');
+        }
         return view('pages.home.plans');
     }
 

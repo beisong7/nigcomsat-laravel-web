@@ -101,6 +101,15 @@ class PaymentController extends Controller
 
 //        dd($paymentDetails);
 
+        if($paymentDetails['status']){
+            //handle all required callbacks
+            $email = $paymentDetails['data']['customer']['email'];
+            return redirect()->route('plans', ['payment'=>'success', 'email'=>$email]);
+        }else{
+            $email = $paymentDetails['data']['customer']['email'];
+            return redirect()->route('plans', ['payment'=>'failed', 'email'=>$email]);
+        }
+
         return $paymentDetails;
 
         //
