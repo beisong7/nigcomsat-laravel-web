@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Payment;
 use Illuminate\Http\Request;
+use Unicodeveloper\Paystack\Facades\Paystack;
+
 
 class PaymentController extends Controller
 {
@@ -82,4 +84,28 @@ class PaymentController extends Controller
     {
         //
     }
+
+    public function redirectToGateway(Request $request){
+        //todo create transaction id and add to request from front
+//        return $request->all();
+        try{
+
+            return Paystack::getAuthorizationUrl()->redirectNow();
+        }catch (\Exception $e){
+            return back()->withMessage("Oops! Unable to complete. Please try again shortly.");
+        }
+    }
+
+    public function handleGatewayCallback(Request $request){
+        $paymentDetails = Paystack::getPaymentData();
+
+        dd($paymentDetails);
+
+        return $paymentDetails;
+
+        //
+
+    }
+
+
 }

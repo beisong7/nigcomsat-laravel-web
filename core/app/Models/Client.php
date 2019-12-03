@@ -38,7 +38,6 @@ class Client extends Authenticatable
         if($this->plan()->end_date > time()){
             $status = true;
         }
-
         return $status;
     }
 
@@ -46,7 +45,13 @@ class Client extends Authenticatable
         return Plan::where('active', true)->where('creator_key', $this->unid)->first();
     }
 
+    public function transactionId(){
+        return $this->id."_test_id";
+    }
+
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
 }

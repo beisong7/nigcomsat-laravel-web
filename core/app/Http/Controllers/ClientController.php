@@ -32,16 +32,26 @@ class ClientController extends IptvController
 
     public function register(Request $request){
 
+        $auser = Client::where('email', $request->input('email'))->orWhere('phone', $request->input('phone'))->select(['id'])->get();
+//        return $auser;
+        if($auser->count()>0){
+            return back()->withErrors($this->setError(['It appears you already have an account. Please try login in or reset your password.']));
+        }
+
+
         if($request->input('terms')==='on'){
-            $client = new Client();
-            $client->names = $request->input('names');
-            $client->unid = $this->unidid(120);
-            $client->phone = $request->input('phone');
-            $client->email = $request->input('email');
-            $client->password = bcrypt($request->input('access'));
-            $client->terms = true;
-            $client->active = true;
-            $client->save();
+
+            $dclient = new Client();
+            $dclient->names = $request->input('names');
+            $dclient->unid = $this->unidid(120);
+            $dclient->phone = $request->input('phone');
+            $dclient->email = $request->input('email');
+            $dclient->password = bcrypt($request->input('access'));
+            $dclient->terms = true;
+            $dclient->active = true;
+
+
+            $dclient->save();
 
             $plan = new Plan();
             $plan->type = $request->input('type');
@@ -51,17 +61,17 @@ class ClientController extends IptvController
             $plan->duration = 'two weeks';
             $plan->duration_type = 'week';
             $plan->active = true;
-            $plan->creator_key = $client->unid;
+            $plan->creator_key = $dclient->unid;
             $plan->end_date = $this->timeFromNow(2, 'weeks');
             $plan->start_date = time();
             $plan->save();
 
             //send email notification to user
-            $this->clientMail($client);
+            $this->clientMail($dclient);
 
-            return redirect()->route('form.success', $client->unid);
+            return redirect()->route('form.success', $dclient->unid);
         }
-        return back()->withErrors($this->setError(['Agree to terms before proceeding']));
+        return back()->withErrors($this->setError(['Agree to terms before proceeding']))->withInput($request->input());
 
     }
 
@@ -71,7 +81,7 @@ class ClientController extends IptvController
         $credentials = ['email' => $email, 'password' => $password,];
         if(filter_var($email, FILTER_VALIDATE_EMAIL)){
             if (Auth::guard('client')->attempt($credentials)) {
-                $client = Client::where('email', $email)->first();
+//                $client = Client::where('email', $email)->first();
 //                Auth::login($client, true); // use when implementing remember login credentials
                 return redirect()->route('client.dashboard');
             }
@@ -83,10 +93,6 @@ class ClientController extends IptvController
         return back()->withErrors(array('access' => 'Invalid email credentials given'))->withInput($request->input());
     }
 
-    public function logout(Request $request){
-        Auth::logout();
-        return redirect()->route('home');
-    }
 
     public function dashboard(){
         return view('client.pages.dashboard.index');
@@ -140,5 +146,9 @@ class ClientController extends IptvController
     public function destroy(Client $client)
     {
         //
+    }
+
+    public function subscription(Request $request){
+        return view('client.pages.subs.index');
     }
 }

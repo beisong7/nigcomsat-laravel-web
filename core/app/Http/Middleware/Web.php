@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
+use Mockery\Exception;
 
 class Web
 {
@@ -17,13 +18,19 @@ class Web
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::guard('client')->check()){
-            View::share('client', Auth::guard('client')->user());
+        try {
+
+            if(Auth::guard('client')->check()){
+               View::share('client', Auth::guard('client')->user());
+            }
+            if(Auth::check()){
+                View::share('admin', Auth::user());
+            }
+        }catch (\Exception $e){
+            View::share('admin', []);
         }
 
-        if(Auth::check()){
-            View::share('admin', Auth::user());
-        }
+
 
         return $next($request);
 

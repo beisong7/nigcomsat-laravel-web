@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 
 
-class HomeController extends Controller
+class HomeController extends IptvController
 {
     /**
      * Create a new controller instance.
@@ -84,5 +84,11 @@ class HomeController extends Controller
         //find client
         $client = Clients::whereUnid($unid)->first();
         return view('pages.forms.success')->with('client', $client);
+    }
+
+    public function logout(Request $request, $guard){
+        auth($guard)->logout();
+//        Auth::guard($guard)->logout();
+        return redirect()->route('home');
     }
 }

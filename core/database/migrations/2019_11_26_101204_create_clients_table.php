@@ -31,6 +31,7 @@ class CreateClientsTable extends Migration
             $table->bigInteger('countdown_pass')->nullable();
             $table->string('reset_toke')->nullable();
             $table->string('creator_key')->nullable(); //creator key
+            $table->rememberToken();
             $table->timestamps();
         });
     }

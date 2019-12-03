@@ -16,6 +16,11 @@
     <link href="{{ asset('fonts/css/all.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css'.'?v='.$ver) }}" rel="stylesheet">
     <link href="{{ asset('css/responsive.css'.'?v='.$ver) }}" rel="stylesheet">
+    @if(!empty($styles))
+        @foreach(@$styles as $style)
+            <link href="{{ asset('css/'.$style.'?v='.$ver) }}" rel="stylesheet">
+        @endforeach
+    @endif
 </head>
 <body>
     <div id="app">
@@ -25,10 +30,9 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/jquery-3.3.1.slim.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/main.js'.'?v='.$ver) }}"></script>
     <script src="{{ asset('js/main.js'.'?v='.$ver) }}"></script>
     @if(!empty($scripts))
         @foreach($scripts as $script)

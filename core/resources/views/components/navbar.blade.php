@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow">
+<nav class="navbar navbar-expand-lg navbar-light bg-light loggedin-nav fixed-top shadow">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
             <span class="strong">NIPTV</span>

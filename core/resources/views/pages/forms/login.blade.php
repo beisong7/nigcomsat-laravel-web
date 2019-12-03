@@ -19,7 +19,7 @@
                                 <form action="{{ route('client.login') }}" method="post">
                                     @csrf
                                     <div class="form-label-group">
-                                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autoFocus name="email" />
+                                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autoFocus name="email" value="{{ old('email') }}" />
                                         <label for="inputEmail">Email address</label>
                                     </div>
 
@@ -37,6 +37,7 @@
                                     <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign in</button>
                                     <div class="text-center"><a class="small" href="{{ route('subscribe','free') }}">I dont have an account.</a></div>
                                     <div class="text-center"><a class="small" href="#">Forgot password?</a></div>
+                                    @include('layouts.notify')
                                 </form>
                             </div>
                         </div>

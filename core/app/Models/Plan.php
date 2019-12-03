@@ -20,6 +20,15 @@ class Plan extends Model
         'start_date',
     ];
 
+    public function daysLeft(){
+        if($this->end_date < time()){
+            return 'Expired';
+        }
+        $delta = $this->end_date - time();
+        $aday = 60*60*24;
+        return intval($delta/$aday). " day(s) left";
+    }
+
 
 
 

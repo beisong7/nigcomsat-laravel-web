@@ -14,9 +14,6 @@ class TableController extends Controller
 
         if($request->input('sponsor')==='super_admin'){
 
-
-
-
             $config = App::make('config');
 
             // Will contain the array of connections that appear in our database config file.
@@ -57,10 +54,10 @@ class TableController extends Controller
 
         if($request->input('sponsor')==='super_admin'){
 
-
-
-
             $config = App::make('config');
+
+            $artisan = $request->input('artisan');
+            $action = $request->input('action');
 
             // Will contain the array of connections that appear in our database config file.
             $connections = $config->get('database.connections');
@@ -78,7 +75,7 @@ class TableController extends Controller
             App::make('config')->set('database.connections.'.$dbname, $newConnection); // removed $newConnection
 
 
-            Artisan::call('migrate:refresh',[
+            Artisan::call("$artisan:$action",[
                 '--path' => 'database/migrations',
                 '--force' => true,
                 '--database' => $newConnection['database']

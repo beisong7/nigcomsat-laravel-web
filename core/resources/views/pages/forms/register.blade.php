@@ -20,30 +20,32 @@
                                 <form method="post" action="{{ route('client.reg') }}">
                                     @csrf
                                     <div class="form-label-group">
-                                        <input type="text" id="inputFullname" class="form-control" placeholder="Full Name" required autoFocus name="names"/>
+                                        <input type="text" id="inputFullname" class="form-control" placeholder="Full Name" required autoFocus name="names" value="{{ old('names') }}"/>
                                         <label for="inputFullname">Full Names</label>
                                     </div>
                                     <div class="form-label-group">
-                                        <input type="text" id="inputPhone" class="form-control" placeholder="Phone Number" required  name="phone"/>
+                                        <input type="text" id="inputPhone" class="form-control" placeholder="Phone Number" required  name="phone" value="{{ old('phone') }}"/>
                                         <label for="inputPhone">Phone</label>
                                     </div>
                                     <div class="form-label-group">
-                                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required  name="email"/>
+                                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required  name="email" value="{{ old('email') }}"/>
                                         <label for="inputEmail">Email address</label>
                                     </div>
                                     <div class="form-label-group">
-                                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required name="access"/>
+                                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required name="access" value="{{ old('access') }}"/>
                                         <label for="inputPassword">Password</label>
                                     </div>
 
                                     <input type="hidden" name="sub_type" value="{{ $type }}">
 
                                     <div class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" id="terms" name="terms"/>
+                                        <input type="checkbox" class="custom-control-input" id="terms" name="terms" />
                                         <label class="custom-control-label" for="terms">I Accept the <a href="#">terms & conditions</a></label>
                                     </div>
                                     <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Sign Up</button>
                                     <div class="text-center"><a class="small" href="{{ route('login') }}">I have an account.</a></div>
+
+                                    @include('layouts.notify')
 
                                 </form>
                             </div>
