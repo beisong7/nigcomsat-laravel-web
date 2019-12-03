@@ -21,9 +21,12 @@
                 </div>
             </div>
             <div class="col-6">
-                @if(!empty(@$msg))
-                    <h3 class="text-muted">{{ @$msg }}</h3>
-                @endif
+                <div class="pt-5 pb-5">
+                    @if(!empty(@$msg))
+                        <h3 class="text-muted">{{ @$msg }}</h3>
+                    @endif
+                </div>
+
             </div>
         </div>
 
