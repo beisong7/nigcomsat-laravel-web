@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Plan;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,8 @@ class ClientController extends IptvController
      */
     public function index()
     {
-        //
+        $clients = Client::where('active', true)->paginate(30);
+        return view('admin.pages.clients.index')->with('clients', $clients);
     }
 
     /**
@@ -53,18 +55,23 @@ class ClientController extends IptvController
 
             $dclient->save();
 
-            $plan = new Plan();
-            $plan->type = $request->input('type');
-            $plan->unid = $this->unidid(120);
-            $plan->name = '';
-            $plan->cost = '';
-            $plan->duration = 'two weeks';
-            $plan->duration_type = 'week';
-            $plan->active = true;
-            $plan->creator_key = $dclient->unid;
-            $plan->end_date = $this->timeFromNow(2, 'weeks');
-            $plan->start_date = time();
-            $plan->save();
+            //get default plan if any and do next line else skip all other actions
+            //create a new subscription and add to the client
+            $def_plan = Plan::where('default', true)->where('active', true)->first();
+
+            if(!empty($def_plan)){
+                $sub = new Subscription();
+                $sub->unid = 'SU'.$this->unidid(117).'BS';
+                $sub->plan_key = $def_plan->unid;
+                $sub->client_key = $dclient->unid;
+                $sub->payment_key = null;
+                $sub->active = true;
+                $sub->start_date = time();
+                $sub->end_date = time() + $def_plan->duration;
+                $sub->duration = $def_plan->info;
+                $sub->duration_type = 'Free';
+                $sub->save();
+            }
 
             //send email notification to user
             $this->clientMail($dclient);

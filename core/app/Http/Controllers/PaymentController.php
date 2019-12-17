@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use App\Models\Payment;
+use App\Models\Plan;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Unicodeveloper\Paystack\Facades\Paystack;
 
 
-class PaymentController extends Controller
+class PaymentController extends IptvController
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +20,8 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        $pays = Payment::paginate(30);
+        return view('admin.pages.payments.index')->with('pays', $pays);
     }
 
     /**
@@ -88,6 +93,18 @@ class PaymentController extends Controller
     public function redirectToGateway(Request $request){
         //todo create transaction id and add to request from front
 //        return $request->all();
+        $payment = new Payment();
+        $payment->unid = $this->unidid(100)."_PAY";
+        $payment->reference = $request->input('reference');
+        $payment->plan_key = $request->input('plan_key');
+        $payment->kobo =  $request->input('amount');
+        $payment->amount =  $request->input('amount');
+        $payment->success = false;
+        $payment->email = $request->input('email');
+        $payment->status = "Attempting";
+        $payment->start = time();
+        $payment->client_key = Auth::guard('client')->unid;
+        $payment->save();
         try{
 
             return Paystack::getAuthorizationUrl()->redirectNow();
@@ -101,16 +118,57 @@ class PaymentController extends Controller
 
 //        dd($paymentDetails);
 
+        //handle all required callbacks
+        $email = $paymentDetails['data']['customer']['email'];
+        $status = $paymentDetails['data']["status"];
+
+        $reference = $paymentDetails['data']["reference"];
+        $payment = Payment::where('reference', $reference)->first();
+        $plan = Plan::where('unid', $payment->plan_key)->first();
+
         if($paymentDetails['status']){
-            //handle all required callbacks
-            $email = $paymentDetails['data']['customer']['email'];
-            return redirect()->route('plans', ['payment'=>'success', 'email'=>$email]);
-        }else{
-            $email = $paymentDetails['data']['customer']['email'];
-            return redirect()->route('plans', ['payment'=>'failed', 'email'=>$email]);
+
+            //get client
+
+            if($status==='success'){
+
+                $dclient = Client::where('email', $email)->first();
+
+                $payment->status = $status;
+                $payment->ends = time();
+                $payment->gateway_message = $paymentDetails['data']["gateway_response"];
+
+                $payment->update();
+
+                //deactivate old sub
+                $old_sub = $dclient->c_sub();
+                $old_sub->active = false;
+                $old_sub->update();
+
+                //activate new subscription
+                $sub = new Subscription();
+                $sub->unid = 'SU'.$this->unidid(117).'BS';
+                $sub->plan_key = $plan->unid;
+                $sub->client_key = $dclient->unid;
+                $sub->payment_key = $payment->unid;
+                $sub->active = true;
+                $sub->start_date = time();
+                $sub->end_date = time() + $plan->duration + $old_sub->subTimeLeft();
+                $sub->duration = $plan->info;
+                $sub->duration_type = $plan->type;
+                $sub->save();
+
+                //todo - REDIRECT TO CORRECT ROUTE
+
+
+                return redirect()->route('plans', ['payment'=>'success', 'email'=>$email]);
+
+            }
+
         }
 
-        return $paymentDetails;
+        $email = $paymentDetails['data']['customer']['email'];
+        return redirect()->route('plans', ['payment'=>'failed', 'email'=>$email]);
 
         //
 

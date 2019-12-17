@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use App\Models\Client as Clients;
 use GuzzleHttp as guzzler;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 
 class HomeController extends IptvController
@@ -37,6 +37,10 @@ class HomeController extends IptvController
 
     public function login(){
         return view('pages.forms.login');
+    }
+
+    public function loginadmin(){
+        return view('pages.forms.loginadmin');
     }
 
     public function plan(Request $request){
@@ -103,8 +107,14 @@ class HomeController extends IptvController
     }
 
     public function logout(Request $request, $guard){
-        auth($guard)->logout();
+        if($guard==='admin'){
+            Auth::logout();
+        }else{
+            auth($guard)->logout();
+        }
+
 //        Auth::guard($guard)->logout();
         return redirect()->route('home');
     }
+
 }

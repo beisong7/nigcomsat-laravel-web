@@ -10,24 +10,29 @@ class Plan extends Model
     protected $fillable=[
         'unid',
         'name',
+        'info',
         'type',
         'cost',
+        'price',
         'duration',
-        'duration_type',
+        'duration_info',
         'active',
+        'default',
         'creator_key',
-        'end_date',
-        'start_date',
     ];
 
-    public function daysLeft(){
-        if($this->end_date < time()){
-            return 'Expired';
-        }
-        $delta = $this->end_date - time();
+    public function days(){
         $aday = 60*60*24;
-        return intval($delta/$aday). " day(s) left";
+        $days = intval($this->duration/$aday);
+        $hours = $this->duration%$aday;
+        return $days. " day(s) ".$hours. " hours";
     }
+
+    public function prices(){
+        return $this->price * 100;
+    }
+
+
 
 
 

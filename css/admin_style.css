@@ -1,7 +1,4 @@
-body{
-    background: #202124 !important;
-    color: #ededed
-}
+
 aside.sidebar{
     height: 100vh;
     background: #36373a;
@@ -22,13 +19,6 @@ aside.sidebar{
     border-color: #36373A !important;
     color: rgba(237, 237, 237, 0.5) !important;
 }
-
-.bg-black{
-    background: #202124 !important;
-}
-.table{
-    color: #e3e3e3 !important;
-}
 nav.fixed-top{z-index: 9999}
 .list-group-item {background-color: transparent;}
 .in-side-nav a{color: #ededed; border-radius: 0 !important;}
@@ -43,22 +33,6 @@ nav.fixed-top{z-index: 9999}
 .navbar-light .navbar-nav .nav-link, .navbar-light .navbar-brand {
     color: rgba(237, 237, 237, 0.5);
 }
-
-.text-grey{
-    color: rgba(237, 237, 237, 0.5);
-}
-
-.table thead th {
-    vertical-align: bottom;
-    border-bottom: transparent;
-}
-
-.table td, .table th {
-    padding: .75rem;
-    vertical-align: top;
-    border-top: transparent;
-}
-
 .mini-load-wrapper{
     position: absolute;
     left: 45%;
@@ -71,6 +45,7 @@ nav.fixed-top{z-index: 9999}
 .load-wraper img{
     width: 100%;
 }
+.
 
 .center-item{
     margin: 0 auto;

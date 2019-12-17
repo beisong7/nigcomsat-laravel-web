@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class Admin
 {
@@ -15,6 +17,12 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if(Auth::check()){
+            View::share('admin', Auth::user());
+            return $next($request);
+        }
+
+        Auth::logout();
+        return redirect()->route('home')->withMessage('You are not logged in');
     }
 }

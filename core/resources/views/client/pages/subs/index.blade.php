@@ -22,9 +22,9 @@ $navactive['subs'] = 'active';
                 <div class="card bg-dark " style="height: 100%">
                     <div class="card-body">
                         <h5 class="text-muted mb-0">Current Subscription</h5>
-                        <h2 class="text-muted">{{ $client->plan()->name }}</h2>
+                        <h2 class="text-muted">{{ $client->c_sub()->plan->name }}</h2>
                         <br>
-                        <p class="text-muted mb-0">Duration : <b>{{ ucfirst($client->plan()->duration) }}</b></p>
+                        <p class="text-muted mb-0">Duration : <b>{{ ucfirst($client->current_sub('duration')) }}</b></p>
 
                     </div>
                 </div>
@@ -33,32 +33,65 @@ $navactive['subs'] = 'active';
                 <div class="card bg-dark " style="height: 100%">
                     <div class="card-body">
                         <h4 class="text-muted">Days Left</h4>
-                        <p class="text-muted mb-0"><small class="fs-12">Starts : {{ date('F d, Y', $client->plan()->start_date) }}</small></p>
-                        <p class="text-muted mb-0"><small class="fs-12">Ends : {{ date('F d, Y', $client->plan()->end_date) }}</small></p>
-                        <a href="#" class="btn btn-outline-danger btn-block ">{{ $client->plan()->daysLeft() }}</a>
+                        <p class="text-muted mb-0"><small class="fs-12">Starts : {{ date('F d, Y', $client->current_sub('start_date')) }}</small></p>
+                        <p class="text-muted mb-0"><small class="fs-12">Ends : {{ date('F d, Y', $client->current_sub('end_date')) }}</small></p>
+                        <a href="#" class="btn btn-outline-danger btn-block ">{{ $client->c_sub()->daysLeft() }}</a>
                     </div>
                 </div>
             </div>
             <div class="col-3 min-h-160">
                 <div class="card bg-dark " style="height: 100%">
                     <div class="card-body">
-                        <h3 class="text-muted">Upgrade Plan</h3>
+                        <h3 class="text-muted">Buy Plan</h3>
                         <br>
-                        <form action="{{ route('pay') }}" method="post">
-                            @csrf
-
-                            <input type="hidden" name="tranId" value="{{ $client->transactionId() }}">
-                            <input type="hidden" name="amount" value="100000"> {{-- required in kobo --}}
-                            <input type="hidden" name="email" value="{{ $client->email }}"> {{-- required --}}
-                            <input type="hidden" name="reference" value="{{ \Unicodeveloper\Paystack\Facades\Paystack::genTranxRef() }}"> {{-- required --}}
-                            <input type="hidden" name="key" value="{{ config('paystack.secretKey') }}"> {{-- required --}}
-
-                            <button type="submit" class="btn btn-outline-danger btn-block">Upgrade (₦1000)</button>
-                        </form>
+                        <a href="{{ route('client.shop.plan') }}" class="btn btn-outline-danger btn-block">Buy Plan</a>
 
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card bg-dark">
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead class="bg-black">
+                            <tr class="text-grey">
+                                <th scope="col">Client</th>
+                                <th scope="col">Plan</th>
+                                <th scope="col">Days Left</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @forelse($client->subs as $sub)
+                                <tr>
+                                    <td>{{ $sub->client->names }}</td>
+                                    <td>{{ $sub->plan->name }}</td>
+                                    <td>{{ $sub->daysLeft() }}</td>
+                                    <td>{{ $sub->plan->cost }}</td>
+                                    <td>{{ $sub->status() }}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-outline-dark btn-sm">View</a>
+                                        <a href="#" class="btn btn-outline-danger btn-sm">Disable</a>
+                                    </td>
+
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="4"><p class="text-center">No Active Client Found</p></td>
+                                </tr>
+                            @endforelse
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 @endsection

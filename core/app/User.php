@@ -15,7 +15,25 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'who',
+        'unid',
+        'first_name',
+        'last_name',
+        'email',
+        'email_valid',
+        'phone_valid',
+        'phone',
+        'passport',
+        'username',
+        'address',
+        'office',
+        'active',
+        'password',
+        'role_id',
+        'seen_last',
+        'countdown_pass',
+        'reset_toke',
+        'creator_key',
     ];
 
     /**
@@ -26,4 +44,18 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function names(){
+        return $this->title . ' ' . $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function image(){
+
+        if(file_exists($this->photo)){
+            return url($this->photo);
+        }else{
+            return url('icons/user.png');
+        }
+
+    }
 }

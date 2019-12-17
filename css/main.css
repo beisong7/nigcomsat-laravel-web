@@ -303,6 +303,10 @@ section.pricing {
     height: 65vh;
 }
 
+.m-w-50{
+    min-width: 50%;
+}
+
 
 /* Fallback for Edge
 -------------------------------------------------- */

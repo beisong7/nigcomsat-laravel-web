@@ -31,22 +31,36 @@ class Client extends Authenticatable
     ];
 
     public function hasAccess(){
-        $status = false;
-        if(empty($this->plan())){
-            return $status;
-        }
-        if($this->plan()->end_date > time()){
-            $status = true;
-        }
+        $status = true;
+//        if(empty($this->plan())){
+//            return $status;
+//        }
+//        if($this->plan()->end_date > time()){
+//            $status = true;
+//        }
         return $status;
     }
 
-    public function plan(){
-        return Plan::where('active', true)->where('creator_key', $this->unid)->first();
+    public function subs(){
+        return $this->hasMany(Subscription::class, 'client_key', 'unid');
+    }
+
+    public function current_sub($key){
+        $csub = Subscription::where('client_key', $this->unid)->where('active', true)->first();
+        return !empty($csub)?$csub->$key:'No Active Subscription';
+    }
+
+    public function c_sub(){
+        return Subscription::where('client_key', $this->unid)->where('active', true)->first();
+
     }
 
     public function transactionId(){
-        return $this->id."_test_id";
+        return uniqid('TRANS_ID');
+    }
+
+    public function timeLeft(){
+        $this->c_sub()->subTimeLeft();
     }
 
     protected $hidden = [

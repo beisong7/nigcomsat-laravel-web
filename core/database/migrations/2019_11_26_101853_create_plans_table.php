@@ -17,14 +17,15 @@ class CreatePlansTable extends Migration
             $table->increments('id');
             $table->string('unid')->nullable();
             $table->string('name')->nullable();
+            $table->text('info')->nullable(); // details of plan separated by underscore "_"
             $table->string('type')->nullable();
-            $table->string('cost')->nullable();
-            $table->string('duration')->nullable();
-            $table->string('duration_type')->nullable(); //days -1, weeks-2, months-3, years-4
-            $table->boolean('active')->nullable(); //days -1, weeks-2, months-3, years-4
+            $table->string('cost')->nullable(); // price in words
+            $table->bigInteger('price')->nullable(); // price in value
+            $table->bigInteger('duration')->nullable(); //unix time of duration
+            $table->string('duration_info')->nullable(); // info on duration e.g duration length in words, price
+            $table->boolean('active')->nullable();
+            $table->boolean('default')->nullable(); //default plan on registration
             $table->string('creator_key')->nullable(); //creator key
-            $table->bigInteger('end_date')->nullable(); //
-            $table->bigInteger('start_date')->nullable(); //
             $table->timestamps();
         });
     }

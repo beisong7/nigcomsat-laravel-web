@@ -15,6 +15,7 @@
                     <a class="nav-link" href="{{ route('channels') }}">Channels</a>
                 </li>
                 @guest('client')
+                    @guest('web')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('home')."#plan" }}">Plans</a>
                     </li>
@@ -24,6 +25,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">Sign In</a>
                     </li>
+                    @endguest
                 @endguest
 
                 @auth('client')
@@ -34,9 +36,9 @@
                 @endauth
 
                 @auth('web')
-                    <li class="nav-item">
-                        {{ $admin->names }}
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.dashboard') }}"> <i class="fa fa-user-circle"></i> {{ $admin->names() }}</a>
+                </li>
                 @endauth
 
 
